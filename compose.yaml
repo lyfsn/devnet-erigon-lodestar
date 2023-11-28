@@ -80,33 +80,27 @@ services:
     restart: unless-stopped
 
 
-  # validator:
-  #   image: sigp/lighthouse:v4.5.0
-  #   user: "root"
-  #   command:
-  #     - lighthouse
-  #     - validator_client
-  #     - --debug-level=info
-  #     - --testnet-dir=/el-cl-genesis-data/custom_config_data
-  #     - --validators-dir=/validator-keys/node-2-keystores/keys
-  #     - --secrets-dir=/validator-keys/node-2-keystores/secrets
-  #     - --init-slashing-protection
-  #     - --http
-  #     - --unencrypted-http-transport
-  #     - --http-address=0.0.0.0
-  #     - --http-port=5042
-  #     - --beacon-nodes=http://beacon:4000
-  #     - --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776
-  #     - --metrics
-  #     - --metrics-address=0.0.0.0
-  #     - --metrics-allow-origin=*
-  #     - --metrics-port=5064
-  #   volumes:
-  #     - ./el-cl-genesis-data:/el-cl-genesis-data
-  #     - ./validator-keys:/validator-keys
-  #   ports:
-  #     - "8142:5042"
-  #     - "8164:5064"
-  #   depends_on:
-  #     - beacon
-  #   restart: unless-stopped
+  validator:
+    image: chainsafe/lodestar:latest
+    user: "root"
+    command:
+      - validator
+      - --logLevel=info 
+      - --dataDir=/consensus-data/validator 
+      - --paramsFile=/el-cl-genesis-data/custom_config_data/config.yaml 
+      - --beaconNodes=http://beacon:4000 
+      - --keystoresDir=/validator-keys/node-3-keystores/keys 
+      - --secretsDir=/validator-keys/node-3-keystores/secrets 
+      - --suggestedFeeRecipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776 
+      - --metrics 
+      - --metrics.address=0.0.0.0 
+      - --metrics.port=8008
+    volumes:
+      - ./el-cl-genesis-data:/el-cl-genesis-data
+      - ./validator-keys:/validator-keys
+    ports:
+      - "8242:5042"
+      - "8264:8008"
+    depends_on:
+      - beacon
+    restart: unless-stopped
