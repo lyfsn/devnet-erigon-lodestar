@@ -43,8 +43,8 @@ services:
     command:
       - beacon 
       - --logLevel=info
-      - --port=9000
-      - --discoveryPort=9000
+      - --port=11300
+      - --discoveryPort=11300
       - --dataDir=/consensus-data
       - --paramsFile=/el-cl-genesis-data/custom_config_data/config.yaml
       - --genesisStateFile=/el-cl-genesis-data/custom_config_data/genesis.ssz
@@ -60,19 +60,20 @@ services:
       - --rest.port=4000
       - --nat=true
       - --enr.ip=${IP_ADDRESS}
-      - --enr.tcp=9000
-      - --enr.udp=9000
+      - --enr.tcp=11300
+      - --enr.udp=11300
       - --subscribeAllSubnets=true
       - --jwt-secret=/el-cl-genesis-data/jwt/jwtsecret
       - --metrics
       - --metrics.address=0.0.0.0
       - --metrics.port=8008
-      - --bootnodes=enr:-MS4QKjvQWjHjNSlrgJBnwI7j88ULp36kH6FegWreBuiHL0_UGs4EvAxALKLgvKjTFpk6x0zTPyxoXXt0PDeZxlAihgBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpAjvkwgQAAAOP__________gmlkgnY0gmlwhFhjXm2EcXVpY4Iq-YlzZWNwMjU2azGhAoNhfDA57peBhfKlgRRDYKmjwOUPSPqj97hpWmwycgJdiHN5bmNuZXRzAIN0Y3CCKviDdWRwgir4
+      - --bootnodes=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
     ports:
-      - "11300:9000"
+      - "11300:11300/tcp"
+      - "11300:11300/udp"
       - "4500:4000"
       - "7454:8008"
     depends_on:
