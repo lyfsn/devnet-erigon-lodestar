@@ -67,7 +67,8 @@ services:
       - --metrics
       - --metrics.address=0.0.0.0
       - --metrics.port=8008
-      - --bootnodes=/ip4/88.99.94.109/tcp/11000/p2p/16Uiu2HAm4GXc2aYZkdfHvvn56s6zEdoSAwdiNcGkzvXX5y4MX4U4
+      - --bootnodes=enr:-Ma4QHxj_PVrcZqLKjoLkUT_axwa0EM_SwgGjF0RPXCtJ21jBUazE0RPLfCpzz8WjT8_2EZZZMVtq4pvzQxd4mfokJuCBlOHYXR0bmV0c4j__________4RldGgykCO-TCBQAAA4QEIPAAAAAACCaWSCdjSCaXCEWGNebYRxdWljgir5iXNlY3AyNTZrMaECg2F8MDnul4GF8qWBFENgqaPA5Q9I-qP3uGlabDJyAl2Ic3luY25ldHMPg3RjcIIq-IN1ZHCCKvg
+      - --disablePeerScoring
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
