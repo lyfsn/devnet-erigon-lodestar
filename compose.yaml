@@ -69,7 +69,6 @@ services:
       - --metrics.address=0.0.0.0
       - --metrics.port=8008
       - --bootnodes=enr:-Ma4QEo2mfc5Oq1HMSx96kQJVWtOzwxjpZmMVcFx5boL7j1Pb51LZ3K0NYyWFminBJc2PwFYCNdtXmEfA-aFmXWLsmWCBpqHYXR0bmV0c4j__________4RldGgykCO-TCBQAAA4QEIPAAAAAACCaWSCdjSCaXCEWGNebYRxdWljgir5iXNlY3AyNTZrMaECg2F8MDnul4GF8qWBFENgqaPA5Q9I-qP3uGlabDJyAl2Ic3luY25ldHMPg3RjcIIq-IN1ZHCCKvg
-      - --rpc.batch.limit=1001
     volumes:
       - ./consensus-data:/consensus-data 
       - ./el-cl-genesis-data:/el-cl-genesis-data
